@@ -17,9 +17,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose port 8080 to satisfy Cloud Run
-EXPOSE 8080
+#EXPOSE 8080
 
 # Entry point: Run the Python script that runs the notebook
+CMD ["python", "run_notebook.py"]
 #CMD ["papermill", "hello_world.ipynb", "output_notebook.ipynb"]
-CMD ["sh", "-c", "papermill hello_world.ipynb output_notebook.ipynb && python -m http.server 8080"]
+#CMD ["sh", "-c", "papermill hello_world.ipynb output_notebook.ipynb && python -m http.server 8080"]
 
