@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8080
 
 # Entry point: Run the Python script that runs the notebook
-CMD ["python", "run_notebook.py"]
+CMD ["papermill", "hello_world.ipynb", "output_notebook.ipynb"]
