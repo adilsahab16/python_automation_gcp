@@ -20,4 +20,6 @@ COPY . .
 EXPOSE 8080
 
 # Entry point: Run the Python script that runs the notebook
-CMD ["papermill", "hello_world.ipynb", "output_notebook.ipynb"]
+#CMD ["papermill", "hello_world.ipynb", "output_notebook.ipynb"]
+CMD ["sh", "-c", "papermill hello_world.ipynb output_notebook.ipynb && python -m http.server 8080"]
+
