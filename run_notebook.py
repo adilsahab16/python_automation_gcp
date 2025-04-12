@@ -4,4 +4,5 @@ pm.execute_notebook(
     'hello_world.ipynb',
     'hello_world_out.ipynb'  # output log of execution
 )
-sys.exit(0)  # Graceful exit to indicate success
+# Keep container alive for Cloud Run health checks
+time.sleep(300)
