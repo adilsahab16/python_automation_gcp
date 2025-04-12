@@ -16,5 +16,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy all files into the container
 COPY . .
 
+# Expose port 8080 to satisfy Cloud Run
+EXPOSE 8080
+
 # Entry point: Run the Python script that runs the notebook
 CMD ["python", "run_notebook.py"]
