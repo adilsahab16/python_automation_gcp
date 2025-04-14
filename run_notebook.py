@@ -14,7 +14,7 @@ def run_notebook():
         pm.execute_notebook(
             'hello_world.ipynb',           # Input notebook
             'hello_world_output.ipynb',    # Output notebook
-            log_output=True                # Show cell outputs in logs
+            #log_output=True                # Show cell outputs in logs
         )
         logger.info("Notebook execution finished successfully.")
     except Exception as e:
