@@ -3,14 +3,22 @@ from flask import Flask
 import threading
 import logging
 
+# Setup basic logging config — this is what Cloud Run will capture
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 # Define a function that runs your notebook
 def run_notebook():
-    pm.execute_notebook(
-        'hello_world.ipynb',           # Input notebook
-        'hello_world_output.ipynb',     # Output notebook
-        log_output=True  # Enable logging from notebook
-    )
-    print("Notebook finished running.")
+    try:
+        logger.info("Starting notebook execution...")
+        pm.execute_notebook(
+            'hello_world.ipynb',           # Input notebook
+            'hello_world_output.ipynb',    # Output notebook
+            log_output=True                # Show cell outputs in logs
+        )
+        logger.info("Notebook execution finished successfully.")
+    except Exception as e:
+        logger.error(f"Error running notebook: {e}")
 
 # Start the notebook in a background thread (so it doesn't block Flask)
 threading.Thread(target=run_notebook).start()
@@ -18,7 +26,6 @@ threading.Thread(target=run_notebook).start()
 # Create a simple Flask app
 app = Flask(__name__)
 
-# Just a test page to return when visiting root
 @app.route('/')
 def index():
     return "Notebook is running in background."
