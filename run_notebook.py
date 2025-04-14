@@ -6,7 +6,8 @@ import threading
 def run_notebook():
     pm.execute_notebook(
         'hello_world.ipynb',           # Input notebook
-        'hello_world_output.ipynb'     # Output notebook
+        'hello_world_output.ipynb',     # Output notebook
+        log_output=True  # Enable logging from notebook
     )
     print("Notebook finished running.")
 
