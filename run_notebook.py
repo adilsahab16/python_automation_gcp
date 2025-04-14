@@ -1,6 +1,7 @@
 import papermill as pm
 from flask import Flask
 import threading
+import logging
 
 # Define a function that runs your notebook
 def run_notebook():
