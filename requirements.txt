@@ -1,4 +1,7 @@
 papermill
 notebook
 flask
-
+ipykernel
+jupyter
+jupyter-client
+nbconvert
